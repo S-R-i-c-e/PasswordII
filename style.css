@@ -54,10 +54,14 @@ small {
     color: var(--error-text-color);
 }
 textarea {
-/*    background: transparent;
-    background-color: var(--tertiary-color); */
+    background: transparent;
+    background-color: var(--tertiary-color);
+    border: 2px solid black;
     border-radius: var(--std-border-radius);
     font-family: var(--primary-font);
+    height: 8rem;
+    margin: 2rem;
+    padding: 0rem 0rem 2rem 0rem;
     width: 220px;
 }
 .output {

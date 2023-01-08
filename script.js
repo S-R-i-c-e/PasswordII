@@ -92,20 +92,32 @@ const specialCharacters = [
     upper: upperCasedCharacters,
   };
 
+function inputError(id, msg) {
+
+}
+// Function for getting a random element from an array
+function getRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
 
 function createCharacterSet(choices) {
     let charactersSet = [];
     for (chosen in choices) {
         if (choices[chosen]) {
-            charactersSet.concat(characters[chosen]);
+            charactersSet = charactersSet.concat(characters[chosen]);
         }
     }
+    charactersSet.pop();
     return charactersSet;
 }
 
 function createPassword(length, options) {
     let charactersChosen = createCharacterSet(options);
-    return charactersChosen;
+    let password = "";                              // initialize the password
+    for (i = 1; i <= length; i++) {             // add passLength number of..
+      password += getRandom(charactersChosen);          // randomly chosen characters
+    }
+    return password;
 }
 function readCheckboxes() {
     let options = {
@@ -125,33 +137,12 @@ function readCheckboxes() {
 
 const lengthField = document.getElementById("length");
 const passwordField = document.getElementById("password-output");
-
 function generatePassword() {
     let passwordLength = lengthField.value;
-    console.log(passwordLength);
     let characterOptions = readCheckboxes();
     if (characterOptions.valid()) {
-        passwordField.value = "success";//createPassword(passwordLength, characterOptions);
+        passwordField.value = createPassword(passwordLength, characterOptions);
     } else {
-        optionsError();
+        inputError();
     }
 }
-// console.log("options.lower : " + characterOptions.lower);
-// console.log("options.upper : " + characterOptions.upper);
-// console.log("options.numeric : " + characterOptions.numeric);
-// console.log("options.special : " + characterOptions.special);
-// console.log("options.valid : " + characterOptions.valid());
-// const form=document.querySelector("#password-input");
-
-// form.addEventListener("generate", function (event) {
-//     //prevent form submission
-//     event.preventDefault();
-
-//     //validate the input
-//     let passwordLength = form.elements["length"];
-//     let options = readCheckboxes();
-//     let checksChecked = validateCheckboxes(options);
-//     if (checksChecked) {
-//         generatePassword(options);
-//     }
-// });
