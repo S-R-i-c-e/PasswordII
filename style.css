@@ -22,7 +22,7 @@ button {
     font-family: var(--primary-font);
     padding: 1rem;
 }
-form {
+#password-input {
     border: 1px solid black;
     border-radius: var(--std-border-radius);
     padding: 2rem;
@@ -32,8 +32,12 @@ html {
     font-family: var(--primary-font);
 }
 input[type=checkbox] {
+    background: transparent;
     background-color: cornflowerblue;
     flex: none;
+}
+input[type=number] {
+    font-family: var(--primary-font);
 }
 label {
     display: flex;
@@ -50,8 +54,8 @@ small {
     color: var(--error-text-color);
 }
 textarea {
-    background: transparent;
-    background-color: var(--tertiary-color);
+/*    background: transparent;
+    background-color: var(--tertiary-color); */
     border-radius: var(--std-border-radius);
     font-family: var(--primary-font);
     width: 220px;
