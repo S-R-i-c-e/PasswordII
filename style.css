@@ -1,18 +1,38 @@
+:root {
+    --primary-color: burlyWood;
+    --secondary-color: cornflowerBlue;
+    --tertiary-color: thistle;
+
+    --primary-text-color: black;
+    --error-text-color: red;
+
+    --primary-font: 'Squada One', 'Courier New', Courier, monospace;
+
+    --std-border-radius: 0.25rem;
+
+}
+
 * {
     box-sizing: border-box;
     padding: 0px;
 }
 button {
-    padding: 1.5rem;
+    background-color: cornflowerblue;
+    border-radius: var(--std-border-radius);
+    font-family: var(--primary-font);
+    padding: 1rem;
 }
 form {
     border: 1px solid black;
+    border-radius: var(--std-border-radius);
     padding: 2rem;
 }
 html {
     font-size: 62.5%;
+    font-family: var(--primary-font);
 }
 input[type=checkbox] {
+    background-color: cornflowerblue;
     flex: none;
 }
 label {
@@ -20,18 +40,23 @@ label {
     align-items: center;
 }
 main {
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center
 }
-
-
-
-
-
+small {
+    color: var(--error-text-color);
+}
+textarea {
+    background: transparent;
+    background-color: var(--tertiary-color);
+    border-radius: var(--std-border-radius);
+    font-family: var(--primary-font);
+    width: 220px;
+}
 .output {
-
     display: flex;
     flex-direction: column;
     align-items: center;   
