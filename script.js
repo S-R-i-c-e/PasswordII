@@ -92,8 +92,14 @@ const specialCharacters = [
     upper: upperCasedCharacters,
   };
 
-function inputError(id, msg) {
+function clearErrors() {
+  document.getElementById("checkbox-error").innerText = "";
+  document.getElementById("length-error").innerText = "";
+}
 
+function inputError(id, message) {
+  const errorOutput = document.getElementById(id);
+  errorOutput.innerText = message;
 }
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -134,15 +140,28 @@ function readCheckboxes() {
     }
     return options;
 }
+function validateLength(passLength) {
+  const minimumLength = 10;
+  const maximumLength = 64;
+  console.log(passLength + "  " + Number.isInteger(passLength));
+  return passLength >= minimumLength
+      && passLength <= maximumLength;
+}
 
 const lengthField = document.getElementById("length");
 const passwordField = document.getElementById("password-output");
 function generatePassword() {
-    let passwordLength = lengthField.value;
-    let characterOptions = readCheckboxes();
-    if (characterOptions.valid()) {
-        passwordField.value = createPassword(passwordLength, characterOptions);
+    clearErrors();
+    let passwordLength = Number(lengthField.value);
+    console.log("length" + passwordLength);
+    if (validateLength(passwordLength)) {
+      let characterOptions = readCheckboxes();
+      if (characterOptions.valid()) {
+          passwordField.value = createPassword(passwordLength, characterOptions);
+      } else {
+          inputError("checkbox-error", "please check at least one box");
+      }
     } else {
-        inputError();
-    }
+      inputError("length-error", "please enter a number 10-64");
+    }  
 }
