@@ -1,17 +1,13 @@
+/* css styles - primarily to set font for elements, and colors */
 :root {
     --primary-color: burlyWood;
     --secondary-color: cornflowerBlue;
     --tertiary-color: thistle;
-
     --primary-text-color: black;
     --error-text-color: red;
-
     --primary-font: 'Squada One', 'Courier New', Courier, monospace;
-
     --std-border-radius: 0.25rem;
-
 }
-
 * {
     box-sizing: border-box;
     padding: 0px;
@@ -22,19 +18,9 @@ button {
     font-family: var(--primary-font);
     padding: 1rem;
 }
-#password-input {
-    border: 1px solid black;
-    border-radius: var(--std-border-radius);
-    padding: 2rem;
-}
 html {
     font-size: 62.5%;
     font-family: var(--primary-font);
-}
-input[type=checkbox] {
-    background: transparent;
-    background-color: cornflowerblue;
-    flex: none;
 }
 input[type=number] {
     font-family: var(--primary-font);
@@ -59,13 +45,19 @@ textarea {
     border: 2px solid black;
     border-radius: var(--std-border-radius);
     font-family: var(--primary-font);
+    font-size: 2rem;
     height: 8rem;
     margin: 2rem;
     padding: 0rem 0rem 2rem 0rem;
     width: 220px;
 }
 .output {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;   
+}
+#password-input {
+    border: 1px solid black;
+    border-radius: var(--std-border-radius);
+    padding: 2rem;
 }

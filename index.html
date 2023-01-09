@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-gb">
-<!--Password Generator II - from scratch html layout and style-->
+<!--Password Generator II - input form with number and four checkboxes -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,35 +11,29 @@
 <body>
   <main>
     <h1>Password Generator II</h1>
+    <!-- form contains input -->
     <form id="password-input">
-      <div>
-      <label for="length">Enter password length (10-64)</label><br>
-      <input type="number" id="length" min="10" max="64" value="10"><br>
-      <small id="length-error"></small>
-    </div>
-      <div class="checkboxes">
+        <label for="length">Enter password length (10-64)</label><br>
+        <input type="number" id="length" min="10" max="64" value="10"><br>
+        <small id="length-error"></small>
         <p>Check at least one type of character</p>
         <label>
           <input type="checkbox" id="lower"> 
           lower case characters
         </label>
-
         <label>
           <input type="checkbox" id="upper"> 
           upper case characters
         </label>
-
         <label>
           <input type="checkbox" id="numeric"> 
-          numeric character
+          numeric characters
         </label>
-
         <label>
           <input type="checkbox" id="special"> 
           special characters
         </label>   
         <small id="checkbox-error"></small>     
-      </div>
     </form>
     <br>
     <div class="output">

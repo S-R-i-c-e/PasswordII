@@ -91,12 +91,12 @@ const specialCharacters = [
     lower: lowerCasedCharacters,
     upper: upperCasedCharacters,
   };
-
+/* clearErrors: two error message elemnts need clearing immediately after the button gets pressed */
 function clearErrors() {
   document.getElementById("checkbox-error").innerText = "";
   document.getElementById("length-error").innerText = "";
 }
-
+/* inputError: display an error message in the case of invalid input */
 function inputError(id, message) {
   const errorOutput = document.getElementById(id);
   errorOutput.innerText = message;
@@ -105,7 +105,7 @@ function inputError(id, message) {
 function getRandom(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
-
+/* createCharacterSet: add the given characters sets together according to the user input */
 function createCharacterSet(choices) {
     let charactersSet = [];
     for (chosen in choices) {
@@ -113,18 +113,20 @@ function createCharacterSet(choices) {
             charactersSet = charactersSet.concat(characters[chosen]);
         }
     }
-    charactersSet.pop();
+    charactersSet.pop();  // for reason unknown a single undefined element is added to the end of the
+                          // added array - pop is the fix for want of understanding
     return charactersSet;
 }
-
+/* createPassword: create the appropriate set of characters and add randomly chosen to the required length */ 
 function createPassword(length, options) {
     let charactersChosen = createCharacterSet(options);
     let password = "";                              // initialize the password
-    for (i = 1; i <= length; i++) {             // add passLength number of..
-      password += getRandom(charactersChosen);          // randomly chosen characters
+    for (i = 1; i <= length; i++) {                 // add required number of..
+      password += getRandom(charactersChosen);      // randomly chosen characters
     }
     return password;
 }
+/* readCheckboxes: set an options object according to the checkboxes */
 function readCheckboxes() {
     let options = {
         lower: document.querySelector("#lower").checked,
@@ -140,20 +142,20 @@ function readCheckboxes() {
     }
     return options;
 }
+/* validateLength: check the length is 10-62 */
 function validateLength(passLength) {
   const minimumLength = 10;
   const maximumLength = 64;
-  console.log(passLength + "  " + Number.isInteger(passLength));
   return passLength >= minimumLength
       && passLength <= maximumLength;
 }
-
+/* assign the two input elements a HANDLE EACH */
 const lengthField = document.getElementById("length");
 const passwordField = document.getElementById("password-output");
+/* generatePassword: on button click, clear errors, check the input validity, then generate */
 function generatePassword() {
     clearErrors();
     let passwordLength = Number(lengthField.value);
-    console.log("length" + passwordLength);
     if (validateLength(passwordLength)) {
       let characterOptions = readCheckboxes();
       if (characterOptions.valid()) {
